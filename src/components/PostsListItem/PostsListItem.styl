@@ -14,6 +14,9 @@
 
   @media (max-width: 400px)
     width calc(100% - 30px)
+  
+  a
+    cursor pointer
 
   &__a
     display block
@@ -47,22 +50,26 @@
     font-size .8em
     line-height 1.5
     color #000
-    
-    > span
-      margin 1px 3px
-      padding 2px
-      align-items center
-      display inline-flex
-      flex-wrap nowrap
-      justify-content center
-      background-color $gray-gray
-      color $white-alabaster
 
   &__p
     color $gray-gray
     padding-bottom 20px
     padding-top 4px
     font-size .75em
+    
+  &__topics
+    padding 4px 20px 20px
+    display flex
+    flex-flow row wrap
+    justify-content center
+    
+    > li
+      margin 2px 3px
+      padding 4px 6px
+      background-color $gray-gray
+
+      > a
+        color $white-alabaster
 
   &__makers
     padding 4px 20px 20px
@@ -79,7 +86,6 @@
       > a
         color $gray-gray
         text-decoration underline
-        cursor pointer
 
 li 
     margin 10px

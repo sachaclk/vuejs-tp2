@@ -12,9 +12,14 @@
 		</router-link>
 		<p class="posts-list-item__p">{{proppost.votes_count}} upvotes</p>
 		<h4 class="posts-list-item__h4">{{proppost.tagline}}</h4>
-		<h4 class="posts-list-item__h4">
-			<span v-for="topic in proppost.topics">{{topic.name}}</span>
-		</h4>
+		<ul class="posts-list-item__topics">
+			<li v-for="topic in proppost.topics" :key="topic.id">
+				<router-link v-if="!isInsideTopic" :to="{ name: 'topic_component', params: { topicId: topic.id } }">
+					#{{topic.name}}
+				</router-link>
+				<a v-if="isInsideTopic" @click="$parent.refreshTopic(topic.id)">#{{topic.name}}</a>
+			</li>
+		</ul>
 		<ul class="posts-list-item__makers">
 			<li v-if="!proppost.makers.length">aucun d'auteur référencé</li>
 			<li v-if="proppost.makers.length">par</li>
@@ -30,7 +35,7 @@
 <script>
 
   export default {
-	props: ['proppost', 'isInsideMaker']
+	props: ['proppost', 'isInsideMaker', 'isInsideTopic']
   }
 
 </script>

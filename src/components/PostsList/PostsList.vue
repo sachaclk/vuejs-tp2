@@ -17,7 +17,7 @@
     </ul>
 
     <ul class="posts-list" >
-      <posts-list-item v-for="post in posts" :proppost="post" :isInsideMaker="false" :key="post.id"></posts-list-item>
+      <posts-list-item v-for="post in posts" :proppost="post" :key="post.id"></posts-list-item>
     </ul>
   </div>
 </template>
@@ -72,12 +72,13 @@
     },
     methods: {
 
-      getPosts(selectedDay) {
+      getPosts(selectedDay, topicId = null) {
         // Utilisez axios pour récupérer les posts de l'API ProductHunt
         // Variable à modifier : this.posts
         axios.get('/posts', {
           params: {
-            days_ago: selectedDay
+            days_ago: selectedDay,
+            "search[topic]": topicId
           }
         })
             .then((response) => {

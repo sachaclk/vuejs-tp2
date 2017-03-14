@@ -9,6 +9,7 @@ import App from './components/App.vue'
 import Home from './components/Home/Home.vue'
 import Post from './components/Post/Post.vue'
 import Maker from './components/Maker/Maker.vue'
+import Topic from './components/Topic/Topic.vue'
 
 //on importe le routeur de Vue
 import VueRouter from 'vue-router'
@@ -25,7 +26,7 @@ Vue.use(VueRouter)
 //on configure nos routes
 const routes = [
   {
-    path: '/', 
+    path: '/',
     component: Home, 
     name: 'home_component'
   },
@@ -38,6 +39,11 @@ const routes = [
     path: '/makers/:makerId',
     component: Maker,
     name: 'maker_component'
+  },
+  {
+    path: '/topics/:topicId',
+    component: Topic,
+    name: 'topic_component'
   }
 ]
 
