@@ -21,6 +21,7 @@
     padding-bottom 38.33%
     position relative
     overflow-y hidden
+
     img
       position absolute
       top 50%
@@ -43,16 +44,31 @@
     padding-right 20px
     padding-bottom 20px
     padding-top 10px
-    font-size .9em
-    font-size 0.8em
+    font-size .8em
     line-height 1.5
     color #000
-    
+
   &__p
     color $gray-gray
     padding-bottom 20px
     padding-top 4px
     font-size .75em
+
+  &__makers
+    padding 4px 20px 20px
+    font-size .75em
+    text-align center
+
+    > li
+      display inline-block
+      margin 0
+
+      &:not(:first-child)
+        padding 3px 4px 3px 0
+
+      > a
+        color $gray-gray
+        text-decoration underline
 
 li 
     margin 10px

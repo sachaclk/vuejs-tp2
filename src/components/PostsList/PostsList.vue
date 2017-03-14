@@ -4,28 +4,21 @@
 <!-- HTML -->
 <template>
   <div class="wrapper">
-      <div class="posts-list-filters">
-        <select v-model="daysAgo" @change="getPosts(daysAgo)" name="day">
-          <option v-for="day in days" :value='day'>{{selectDaysLabel(day) }}</option>
-        </select>
-      </div>
-      <ul class="posts-list-stats">
-        <li class="posts-list-stats__li" v-for="stat in stats">
-          <p class="posts-list-stats__li--nbr">{{stat.count}}</p>
-          <p class="posts-list-stats__li--label">{{stat.label}}</p>
-        </li>
-      </ul>
-    <!-- <ul class="posts-list-stats">
-      <li>{{ stats.count }}Posts</li>
-      <li>{{ }}Votes</li>
-      <li>{{ }}Comments</li>
-      <li>{{ }}Makers</li>
-    </ul> -->
-
-    <ul class="posts-list" >
-        <posts-list-item v-for="post in posts" :proppost="post" :key="post.id"></posts-list-item>
+    <div class="posts-list-filters">
+      <select v-model="daysAgo" @change="getPosts(daysAgo)" name="day">
+        <option v-for="day in days" :value='day'>{{selectDaysLabel(day) }}</option>
+      </select>
+    </div>
+    <ul class="posts-list-stats">
+      <li class="posts-list-stats__li" v-for="stat in stats">
+        <p class="posts-list-stats__li--nbr">{{stat.count}}</p>
+        <p class="posts-list-stats__li--label">{{stat.label}}</p>
+      </li>
     </ul>
 
+    <ul class="posts-list" >
+      <posts-list-item v-for="post in posts" :proppost="post" :key="post.id"></posts-list-item>
+    </ul>
   </div>
 </template>
 
@@ -82,7 +75,7 @@
       getPosts(selectedDay) {
         // Utilisez axios pour récupérer les posts de l'API ProductHunt
         // Variable à modifier : this.posts
-        axios.get('/v1/posts', {
+        axios.get('/posts', {
           params: {
             days_ago: selectedDay
           }
