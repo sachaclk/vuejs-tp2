@@ -53,7 +53,6 @@
                     .then((response) => {
                         console.log(response.data.user)
                         this.maker = response.data.user
-                        this.getPostsMaker(makerId);
                     })
                     .catch(function (error) {
                         console.log(error)

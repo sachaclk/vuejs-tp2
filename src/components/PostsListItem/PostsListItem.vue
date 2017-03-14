@@ -16,9 +16,7 @@
 			<li v-if="!proppost.makers.length">aucun d'auteur référencé</li>
 			<li v-if="proppost.makers.length">par</li>
 			<li v-for="(maker, index) in proppost.makers">
-				<router-link :to="{ name: 'maker_component', params: { makerId: maker.id} }">
-					{{maker.name}}
-				</router-link>
+				<button @click="$parent.getMaker(maker.id)">{{maker.name}}</button>
 			</li>
 		</ul>
 	</li>
