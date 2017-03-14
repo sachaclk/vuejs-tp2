@@ -12,6 +12,9 @@
 		</router-link>
 		<p class="posts-list-item__p">{{proppost.votes_count}} upvotes</p>
 		<h4 class="posts-list-item__h4">{{proppost.tagline}}</h4>
+		<h4 class="posts-list-item__h4">
+			<span v-for="topic in proppost.topics">{{topic.name}}</span>
+		</h4>
 		<ul class="posts-list-item__makers">
 			<li v-if="!proppost.makers.length">aucun d'auteur référencé</li>
 			<li v-if="proppost.makers.length">par</li>
