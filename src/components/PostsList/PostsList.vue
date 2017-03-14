@@ -17,7 +17,7 @@
     </ul>
 
     <ul class="posts-list" >
-      <posts-list-item v-for="post in posts" :proppost="post" :key="post.id"></posts-list-item>
+      <posts-list-item v-for="post in posts" :proppost="post" :isInsideMaker="false" :key="post.id"></posts-list-item>
     </ul>
   </div>
 </template>

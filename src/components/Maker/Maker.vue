@@ -12,7 +12,7 @@
         </div>
         <div class="wrapper">
             <ul class="posts-list">
-                <posts-list-item v-for="post in maker.maker_of" :proppost="post" :key="post.id"></posts-list-item>
+                <posts-list-item v-for="post in maker.maker_of" :proppost="post" :isInsideMaker="true" :key="post.id"></posts-list-item>
             </ul>
         </div>
     </div>
