@@ -4,11 +4,21 @@
 <!-- HTML -->
 <template>
     <div v-if="post">
-        <span>Post :</span>
-        <span>{{ post.name}}</span>
+        <div class="app-header">
+        <div class="title">{{post.name}}</div>
+        <div class="tagline">{{post.tagline}}</div>
+        </div>
+        <div class="date">{{post.day}}</div>
+        <div class="date">{{post.body}}</div>
+        <div class="wrapper">
+            <ul class="posts-list">
+                <posts v-for="post in post.date" :proppost="date" :isInsideMaker="true" :key="post.id"></posts>
+            </ul>
+        </div>
+
         <img :src="post.thumbnail.image_url">
         <!--<span>{{ post.}}</span>-->
-        <span>Nombre de commentaires : {{ post.comments_count}}</span>
+        <div>Nombre de commentaires :{{ post.comments_count }}</div>
     </div>
 </template>
 
@@ -39,7 +49,9 @@
                 axios.get('/posts/' + postId)
                     .then((response) => {
                         console.log(response.data.post)
+                        console.log(response.data.postId)
                         this.post = response.data.post
+
                     })
                     .catch(function (error) {
                         console.log(error)
