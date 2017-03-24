@@ -3,13 +3,13 @@ div
     margin 0px
     text-align center
 
-.title
+.app-header_title
   font-size 2em
   width 100%
   padding-top 20px
   color orangered
 
-.tagline
+.app-header_tagline
   padding-top 10px
   color grey
   padding-bottom 20px
@@ -38,15 +38,12 @@ div
 
 
 
-.date
+.app-header_date
   color rgba(0, 0, 0, 0.64)
 
-.by
+.content_by
   color grey
   margin-bottom 0
-
-.space
-  height 0px
 
 .makers_li
   margin-top 0px
@@ -63,7 +60,6 @@ div
 .content li
   margin-top 20px
   border-style solid
-  border-top rgba(236,236,236,0.34) 1px
 
 .makers
   margin-top 20px
@@ -72,6 +68,9 @@ div
 .makers li
   color orangered
   cursor pointer
+
+.makers li a
+  color orangered
 
 .makers p
   margin-top 10px
@@ -124,21 +123,25 @@ button
   height 25px
   margin-bottom 20px
 
+button a
+  color black
+
 button:hover
   background-color rgba(130, 0, 50, 0.1)
 
-.head_name
+.app-header_head-name
   position fixed
   text-align center
   width 100%
   height 200px
   background: #f2f2f2
   z-index 2
+  margin-top -40px
 
 footer
   padding-top 20px
 
-.tag li
+.app-header_tag li
   display inline-block
   color: #fff6f5
   margin 2px 3px
@@ -147,5 +150,17 @@ footer
   margin-top 20px
   cursor pointer
 
-.tag li:hover
+.app-header_tag li a
+  color: #fff6f5
+
+.app-header_tag li:hover
   background-color #4e4e4e
+
+.content_comments
+  border-color grey
+  border-style solid
+  border-width thin
+  padding 20px
+  
+.content_comments_name
+  color black

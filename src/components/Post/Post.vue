@@ -5,22 +5,19 @@
 <template>
     <!--<div v-if="post" :style="{ backgroundImage: 'url(' + post.thumbnail.image_url + ')' }" class="app-conteneur">-->
     <div v-if="post" class="app-conteneur">
-    <div  class="app-conteneur">
-            <div class="head_name">
-            <div class="title">{{post.name}}</div>
-            <div class="tagline">{{post.tagline}}</div>
-            <div class="space"></div>
-            <p class="date">Date: {{post.day}}</p>
-                <div class="space"></div>
-                <ul class="tag">
-                
+    <div  class="app-header">
+            <div class="app-header_head-name">
+            <div class="app-header_title">{{post.name}}</div>
+            <div class="app-header_tagline">{{post.tagline}}</div>
+            <p class="app-header_date">Date: {{post.day}}</p>
+                <ul class="app-header_tag">
                     <li v-for="topics in post.topics" :key="topics.id" class="tag_li">
                         <router-link :to="{name:'topic_component', params:{topicId:topics.id}}" > #{{ topics.name }}
                         </router-link>
                    </li>
                 </ul>
             </div>
-            <!--</div>-->
+            </div>
 
             <img :src="post.media.image_url" >
 
@@ -31,16 +28,22 @@
                 </ul>
                 <ul class="makers">
 
-                    <p class="by">By</p>
+                    <p class="content_by">By</p>
                     <li v-for="makers in post.makers" :key="makers.id" class="makers_li">
                         <router-link :to="{name:'maker_component', params:{makerId:makers.id}}" >{{ makers.name }}
                         </router-link>
                     </li>
                 </ul>
                 <div>Nombre de commentaires : {{ post.comments_count }}</div>
-                <button>Voir les commentaires</button>
+                <button @click="show_comments=true">Voir les commentaires</button>
+                <ul v-if="show_comments" class="">
+                    <li v-for="comments in post.comments" :key="comments.id" class="content_comments">
+                        {{ comments.body }} <p class="content_comments_name">Auteur: {{ comments.user.name }}</p>
+                    </li>
+                </ul>
             </div>
-            <!-- <img class="img-title" :src="post.thumbnail.image_url">-->
+
+        <!-- <img class="img-title" :src="post.thumbnail.image_url">-->
             <!--<span>{{ post.}}</span>-->
             <footer>
 
@@ -75,8 +78,10 @@
 
         data() {
             return {
-                post: null
+                post: null,
+                show_comments: false
             }
+
         },
 
         created() {
@@ -97,9 +102,23 @@
                     .catch(function (error) {
                         console.log(error)
                     })
+            },
+
+            visibilite(thingId)
+            {
+                let targetElement;
+                targetElement = document.getElementById(thingId) ;
+                if (targetElement.style.display == "none")
+                {
+                    targetElement.style.display = "block" ;
+                } else {
+                    targetElement.style.display = "none" ;
+                }
             }
 
         }
 
     }
+
+
 </script>
