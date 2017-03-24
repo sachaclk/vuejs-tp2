@@ -13,8 +13,11 @@
             <p class="date">Date: {{post.day}}</p>
                 <div class="space"></div>
                 <ul class="tag">
-
-                    <li v-for="topics in post.topics" :key="topics.id" class="tag_li">#{{ topics.name }}</li>
+                
+                    <li v-for="topics in post.topics" :key="topics.id" class="tag_li">
+                        <router-link :to="{name:'topic_component', params:{topicId:topics.id}}" > #{{ topics.name }}
+                        </router-link>
+                   </li>
                 </ul>
             </div>
             <!--</div>-->
@@ -27,26 +30,32 @@
                     <li v-for="media in post.media" :key="media.id" class="img_li"><img :src="media.image_url"></li>
                 </ul>
                 <ul class="makers">
+
                     <p class="by">By</p>
-                    <li v-for="makers in post.makers" :key="makers.id" class="makers_li">{{ makers.name }}</li>
+                    <li v-for="makers in post.makers" :key="makers.id" class="makers_li">
+                        <router-link :to="{name:'maker_component', params:{makerId:makers.id}}" >{{ makers.name }}
+                        </router-link>
+                    </li>
                 </ul>
                 <div>Nombre de commentaires : {{ post.comments_count }}</div>
                 <button>Voir les commentaires</button>
             </div>
             <!-- <img class="img-title" :src="post.thumbnail.image_url">-->
             <!--<span>{{ post.}}</span>-->
-            <footer class="footer">
+            <footer>
 
             <div class="related">
                 <h3>Related posts :</h3>
                 <ul class="">
+
                     <li v-for="related_posts in post.related_posts" :key="related_posts.id" :style="{ backgroundImage: 'url(' + related_posts.thumbnail.image_url + ')' }">
+                        <router-link :to="{name:'post_component', params:{postId:related_posts.id}}" >
+                            <div class="related_box">
+                            <p class="related_name">{{ related_posts.name }}</p>
+                            <p class="related_notation">↗{{ related_posts.votes_count }}</p>
+                            </div>
+                        </router-link>
 
-                        <div class="related_box">
-                        <p class="related_name">{{ related_posts.name }}</p>
-
-                        <p class="related_notation">↗{{ related_posts.votes_count }}</p>
-                        </div>
                     </li>
                 </ul>
             </div>
